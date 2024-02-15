@@ -32,7 +32,7 @@ Before running the program, ensure that the following components are installed:
     pip install -r requirements.txt
     ```
 
-### Running the Program in a Local Environment
+## Running the Program in a Local Environment
 
 1. Navigate to the directory containing the program.
 2. Launch the API server by executing the command:
