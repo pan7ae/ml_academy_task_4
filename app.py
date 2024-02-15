@@ -10,6 +10,21 @@ import pandas as pd
 # Data model declaration for API input
 class BeerRequest(BaseModel):
     user_beers: List[str]
+    
+# Create an instance of FastAPI
+app = FastAPI()
+
+# Load the KNN model from the file
+FILE_PATH = 'models/model_knn.joblib'
+model_knn = load(FILE_PATH)
+
+# File path for the interaction matrix data
+PATH = "data/interaction_matrix.csv"
+
+# Load the interaction matrix and create a sparse matrix
+interaction_matrix = pd.read_csv(PATH, index_col=0)
+beer_features_df_matrix = csr_matrix(interaction_matrix.values)
+
 
 # Function to get the list of user's beers considering closest matches
 def get_beers_list(beers: List[str]) -> List[str]:
@@ -79,16 +94,3 @@ async def get_recommendations(beer_request: BeerRequest):
     return recommendations
 
 
-# Create an instance of FastAPI
-app = FastAPI()
-
-# Load the KNN model from the file
-FILE_PATH = 'models/model_knn.joblib'
-model_knn = load(FILE_PATH)
-
-# File path for the interaction matrix data
-PATH = "data/interaction_matrix.csv"
-
-# Load the interaction matrix and create a sparse matrix
-interaction_matrix = pd.read_csv(PATH, index_col=0)
-beer_features_df_matrix = csr_matrix(interaction_matrix.values)
