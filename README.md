@@ -13,3 +13,64 @@
 4. Обернуть свое решение в Docker
 5. Результат проделанной работы представите в структурированном виде в GitHub.
 
+
+## Program Launch
+
+
+Before running the program, ensure that the following components are installed:
+
+- Python (version 3.x)
+- Docker (if necessary)
+
+### Installing Dependencies
+
+1. Open a terminal.
+2. Navigate to the directory containing the program.
+3. Install dependencies by executing the following command:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### Running the Program in a Local Environment
+
+1. Navigate to the directory containing the program.
+2. Launch the API server by executing the command:
+
+    ```bash
+    uvicorn app:app --host 0.0.0.0 --port 8000
+    ```
+
+3. Open a new terminal.
+4. Navigate to the directory containing the program.
+5. Run the script to send requests by executing the command:
+
+    ```bash
+    python send_requests.py
+    ```
+
+## Running the Program Using Docker
+
+1. Navigate to the directory containing the program.
+2. Build the Docker image by executing the command:
+
+    ```bash
+    docker build -t your_image_name .
+    ```
+
+3. Run a container using the built image by executing the command:
+
+    ```bash
+    docker run -d -p 8000:8000 your_image_name
+    ```
+
+4. Run the script to send requests by executing the command:
+
+    ```bash
+    python send_requests.py
+    ```
+
+## Testing Functionality
+
+After running the request-sending script, you should have access to the results of the API server interaction. Verify that the results match the expected outcomes.
+
